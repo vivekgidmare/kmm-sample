@@ -1,6 +1,7 @@
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
+//    `kotlin-dsl`
     id("com.android.application")
     kotlin("android")
     id("kotlin-parcelize")
@@ -9,12 +10,12 @@ plugins {
 val composeVersion = properties["version.compose"] as String
 
 android {
-    compileSdk = (properties["android.compileSdk"] as String).toInt()
+    compileSdk = (project.properties["android.compileSdk"] as String).toInt()
 
     defaultConfig {
-        minSdk = (properties["android.minSdk"] as String).toInt()
-        targetSdk = (properties["android.targetSdk"] as String).toInt()
-        buildToolsVersion = properties["android.buildToolsVersion"] as String
+        minSdk = (project.properties["android.minSdk"] as String).toInt()
+        targetSdk = (project.properties["android.targetSdk"] as String).toInt()
+        buildToolsVersion = project.properties["android.buildToolsVersion"] as String
 
         applicationId = "com.github.jetbrains.rssreader.androidApp"
         versionCode = 1
